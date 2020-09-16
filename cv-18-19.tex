@@ -1,0 +1,143 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX Template: Curriculum Vitae
+%
+% Source: http://www.howtotex.com/
+% Feel free to distribute this template, but please keep the
+% referal to HowToTeX.com.
+% Date: July 2011
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+% If you're new to LaTeX, the wikibook is a great place to start:
+% http://en.wikibooks.org/wiki/LaTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[paper=a4,fontsize=11pt]{scrartcl} % KOMA-article class
+					
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{amsmath,amsfonts,amsthm}     % Math packages
+\usepackage{graphicx}                    % Enable pdflatex
+\usepackage[svgnames]{xcolor}            % Colors by their 'svgnames'
+\usepackage[hidelinks, colorlinks=true, urlcolor=blue]{hyperref}
+\usepackage[
+left=0.50in,
+right=0.50in,
+top=0.8in,
+bottom=0.5in]{geometry}
+
+\usepackage{url}
+
+\frenchspacing              % Better looking spacings after periods
+\pagestyle{empty}           % No pagenumbers/headers/footers
+
+
+%%% Custom sectioning (sectsty package)
+%%% ------------------------------------------------------------
+\usepackage{sectsty}
+
+\sectionfont{%			            % Change font of \section command
+	\usefont{OT1}{phv}{b}{n}%		% bch-b-n: CharterBT-Bold font
+	\sectionrule{0pt}{0pt}{-5pt}{1pt}}
+
+%%% Macros
+%%% ------------------------------------------------------------
+\newlength{\spacebox}
+\settowidth{\spacebox}{8888888888}			% Box to align text
+\newcommand{\sepspace}{\vspace*{0.5em}}		% Vertical space macro
+
+\newcommand{\MyName}[1]{ % Name
+		\Huge \usefont{OT1}{phv}{b}{n} \hfill #1
+		\par \normalsize \normalfont}
+		
+\newcommand{\MySlogan}[1]{ % Slogan (optional)
+		\large \usefont{OT1}{phv}{m}{n}\hfill \text{#1}
+		\par \normalsize \normalfont}
+
+\newcommand{\NewPart}[1]{\section*{\uppercase{#1}}}
+
+\newcommand{\PersonalEntry}[2]{
+		\noindent\hangindent=2em\hangafter=0 % Indentation
+		\parbox{\spacebox}{        % Box to align text
+		\textit{#1}}		       % Entry name (birth, address, etc.)
+		\hspace{1.5em} #2 \par}    % Entry value
+
+\newcommand{\SkillsEntry}[2]{      % Same as \PersonalEntry
+		\noindent\hangindent=1em\hangafter=0 % Indentation
+		\parbox{100pt}{	        % Box to \align text
+		\textit{#1}}			   % Entry name (birth, address, etc.)
+		\hspace{1.5em} #2 \par}    % Entry value	
+		
+\newcommand{\EducationEntry}[4]{
+	\noindent \textbf{#1} \hfill      % Study
+	\colorbox{White}{%
+		\parbox{8em}{%
+			\hfill\color{Black}#2}} \par  % Duration
+	\small #4 % Description
+	\normalsize \par}
+		
+		
+\newcommand{\SomeEntry}[4]{
+		\noindent \textbf{#1} \hfill      % Study
+		\colorbox{White}{%
+			\parbox{12em}{%
+			\hfill\color{Black}#2}} \par  % Duration
+		\noindent \texttt{#3} \par        % School
+		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
+		\normalsize \par}
+
+\begin{document}
+
+\MyName{Vasily Kuporosov}
+\MySlogan{vasyoid@gmail.com}
+\MySlogan{\href{http://github.com/vasyoid}{github.com/vasyoid}}
+\MySlogan{+7(921)437-35-21}
+
+\sepspace
+
+\NewPart{Education}
+
+\EducationEntry{Higher School of Economics}{2020 - present}{}{Master’s degree in Mathematics and Computer Science }
+
+\EducationEntry{Higher School of Economics}{2018 - 2020}{}{Bachelor's degree in Mathematics and Computer Science (years 3-4) \textbf{GPA 9.27/10.0} }
+
+\EducationEntry{Saint Petersburg Academic University}{2016 - 2018}{}{Bachelor’s degree in Mathematics and Computer Science (years 1-2) }
+
+\NewPart{Work Experience}
+
+\SomeEntry{JetBrains – Software developer in CoSpaces project}{Feb 2018 - present}{\vspace{-10pt}}{Implemented a triangulation module for complex polygons with holes;
+	Created a servlet that converts a text into Bézier curves according to a specified font;
+	Implemented a 3D-text builder that takes a text, triangulates its curves and extrudes them to create a 3D item;
+	3D text is now used in CoSpaces Edu – a web app which allows creating 3D spaces for educational purposes.
+	Technologies used: Kotlin for server side, Java for client-side, TeaVM to compile Java into JavaScript.}
+
+\SomeEntry{Yandex software development internship}{Jul-Oct 2018}{\vspace{-10pt}}{Designed an automated testing system for GUI. Used Selenium WebDriver, Selenium Maven project for java and JUnit testing framework. Implemented $\sim$200 test cases, improved testing system by optimizing its components and implementing new features.}
+
+\NewPart{Projects}
+
+\SomeEntry{Java + RISC-V (team project, bachelor's thesis)}{Oct 2019 - June 2020}{\href{https://github.com/azul-research/jdk-riscv}{github.com/azul-research/jdk-riscv}}{OpenJDK port for RISC-V processor architecture. The goal of the project is to implement a platform-specific part of OpenJDK so that it can run on RISC-V processors.\\
+Implemented all arithmetic bytecode instructions and several math intrinsic functions in bytecode interpreter. Also contributed in some other parts of the interpreter.}
+\sepspace
+\SomeEntry{Testopithecus (team project)}{Mar-May 2019}{\href{https:/github.com/smart-testing/testopithecus}{github.com/smart-testing/testopithecus}}{A research on how to make automated testing smarter. The prototype has been adopted by the Yandex.mail team.
+	Created an infrastructure for benchmarking crawling and crash-seeking algorithms on Android, iOS and web;
+	Invented and implemented various enhancements for automated UI interaction;
+	Implemented a tool that reconstructs an application usage scenario based on debug logging output.} 
+\sepspace
+\SomeEntry{Automated image dataset segmentation tool}{Feb-May 2018}{\href{https://github.com/vasyoid/segmentation}{github.com/vasyoid/segmentation}}{An algorithm that automatically segments a dataset of images to an object and background. A user roughly marks an object and background on the first image, after that the precise segmentation of the image is built and then spread to the whole dataset.} 
+
+\NewPart{Knowledge and Skills}
+
+\SkillsEntry{Used in projects}{C, C++, Java, Kotlin, Algorithms and Data Structures.}
+\SkillsEntry{Classroom experience}{Python, Haskell, Android SDK, \LaTeX, Git.}
+\end{document}
